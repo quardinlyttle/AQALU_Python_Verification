@@ -1,6 +1,6 @@
 # AQALU Verification Repository
 
-This repository contains the AQALU design from my [Tiny Tapeout 4 submission](https://github.com/quardinlyttle/tt04-AQALU) and implements it in Verilog and Python, along with a verification suite to test its functionality.
+This repository contains the AQALU design from my [Tiny Tapeout 4 submission](https://github.com/quardinlyttle/tt04-AQALU) and implements it in both Verilog and Python. It includes a verification suite to test the functionality of the AQALU. This is an active project where I am learning to generate test vectors using Python for Verilog testbenches.
 
 ## Files
 
