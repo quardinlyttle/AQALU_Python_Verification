@@ -1,32 +1,35 @@
 """AQALU Verification Python Test Vector Generator
 
-Thus script is intended to generate values for the AQALU module for verification purposes
+This script is intended to generate values for the AQALU module for verification purposes
 """
 
 from AQALU import AQALU
 
-A =int(input("Please enter the value of A:\n"))
+A = int(input("Please enter the value of A (0 to 3):\n"))
 
-#Mild Error Handling for incompatible A values 
-while(A>3 & A>0):
-    print("A value entered is not valid!\n")
-    A =int(input("Please enter the value of A:\n"))
+# Error handling for incompatible A values
+while A < 0 or A > 3:
+    print("A value entered is not valid! Please enter a value between 0 and 3.\n")
+    A = int(input("Please enter the value of A (0 to 3):\n"))
 
-B =int(input("Please enter the value of B:\n"))
-#Mild Error Handling for incompatible A values 
-while(B>3 & B>0):
-    print("B value entered is not valid!\n")
-    B =int(input("Please enter the value of B:\n"))
+B = int(input("Please enter the value of B (0 to 3):\n"))
+
+# Error handling for incompatible B values
+while B < 0 or B > 3:
+    print("B value entered is not valid! Please enter a value between 0 and 3.\n")
+    B = int(input("Please enter the value of B (0 to 3):\n"))
 
 #intialize arrays and opcode
 opcode =0b0000 
 opArray = []
 outArray = []
+numOpcode = 16
+numSeconds = 2
 
 #loop through opcodes to obtain values
-for i in range(15):
+for i in range(numOpcode):
     opArray.append(opcode)
-    result = AQALU(opcode,A,B)
+    result = AQALU(opcode,A,B,numSeconds*10_000_000)
     outArray.append(result)
     print ("Opcode "+ bin(opcode)+" binary: "+bin(result)+
            " int:"+str(result))
@@ -35,7 +38,7 @@ for i in range(15):
 f = open("testvector1.txt", "a")
 
 #write values to test file
-for i in range(15):
+for i in range(numOpcode):
     f.write(str(A)+","+str(B)+","+str(opArray[i])+","+str(outArray[i])+"\n")
 
 f.close()

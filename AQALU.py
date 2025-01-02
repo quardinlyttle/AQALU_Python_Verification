@@ -3,7 +3,7 @@
 
 Recreating the AQALU verilog module in Python
 """
-def AQALU(opcode,A,B, clockCycles = 0):
+def AQALU(opcode,A,B, clockCycles = 0,valChange = 'n'):
 
     #light error handling
     if(A > 3 or B > 3):
@@ -63,12 +63,18 @@ def AQALU(opcode,A,B, clockCycles = 0):
 
         case 0b1111: #runningSum
             sum = (A<<2)+B
-            seconds = int(clockCycles/10000000)
-            
-            for i in range(seconds):
-                nextNum  = int(input("insert next number"))
-                sum += nextNum
-            
+            seconds = int(clockCycles/10_000_000)
+
+            if valChange == 'n':
+                og = sum
+                for i in range(seconds-1):
+                    sum+=og
+            elif valChange == 'y':
+                for i in range(seconds-1):
+                    nextNum  = int(input("insert next number"))
+                    sum += nextNum
+            else:
+                print("please choose 'y' or 'n' for value change identifier for running sum")
             result = sum
 
     return result
