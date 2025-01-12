@@ -13,6 +13,7 @@ This repository contains the AQALU design from my [Tiny Tapeout 4 submission](ht
   - **RunningSum**: A module that calculates a running sum based on clock cycles.
 
 - **AQALU_tb.v**: A testbench for the AQALU module. It generates a clock signal, applies test vectors, and verifies the outputs against expected results.
+- **AQALU_tb_Sequential_Trace.v**: A testbench for the AQALU module which generates a trace table to the console with the simulation timestamps. 
 
 ### Python Files
 
