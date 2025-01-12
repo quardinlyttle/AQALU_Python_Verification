@@ -60,8 +60,9 @@ end
         doneFlag = 0;
 
         // Read and apply each test case from the file
-        $display("|Time\t|Match Status\t|Opcode\t|Expected \t|ALU-Output\t|Seconds\t|");
-        $display("====================================================================");
+        $display("|Time\t\t|Match Status\t|Opcode\t|Expected \t|ALU-Output\t|Seconds\t|");
+        $display("================================================================================================");
+        
         // Close file and finish simulation
         //$fclose(fd);
         //$finish;
@@ -109,17 +110,17 @@ end
                 */
                 
                 if (aluOut !== testOut) begin
-                    $display("|%0tns\t|Mismatch!\t|%b\t|%b\t|%b\t|%d\t|",$time,opcode, testOut, aluOut, numSeconds);
+                    $display("|%0tns\t|Mismatch!\t|%b\t|%b\t|%b\t|%d\t\t|",$time,opcode, testOut, aluOut, numSeconds);
                 end else begin
-                    $display("|%0tns\t|Match! \t|%b\t|%b\t|%b\t|%d\t|",$time,opcode, testOut, aluOut, numSeconds);
+                    $display("|%0tns\t|Match! \t|%b\t|%b\t|%b\t|%d\t\t|",$time,opcode, testOut, aluOut, numSeconds);
                 end
             end
                 else if(opcode < 4'b1111)begin
                     #timestep
                     if (aluOut !== testOut) begin
-                        $display("|%0tns\t|Mismatch!\t|%b\t|%b\t|%b\t|%d\t|",$time,opcode, testOut, aluOut, numSeconds);
+                        $display("|%0tns\t|Mismatch!\t|%b\t|%b\t|%b\t|%d\t\t|",$time,opcode, testOut, aluOut, numSeconds);
                     end else begin
-                        $display("|%0tns\t|Match! \t|%b\t|%b\t|%b\t|%d\t|",$time,opcode, testOut, aluOut, numSeconds);
+                        $display("|%0tns\t|Match! \t|%b\t|%b\t|%b\t|%d\t\t|",$time,opcode, testOut, aluOut, numSeconds);
                     end
                 end
             #10    
