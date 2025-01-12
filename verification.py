@@ -34,7 +34,7 @@ opcode =0b0000
 opArray = []
 outArray = []
 numOpcode = 16
-numSeconds = 7
+numSeconds = 2
 
 #loop through opcodes to obtain values
 for i in range(numOpcode):

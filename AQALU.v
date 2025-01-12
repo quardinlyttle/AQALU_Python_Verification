@@ -132,7 +132,8 @@ always @(posedge clk, posedge rst)
 			counter <=0;
 			Result <=0;
 		end
-		else if (counter == 26'd50_000_000)
+		//else if (counter == 26'd50_000_000)
+		else if (counter == 26'd5_000) //playing with timesteps
 		begin	
 			counter <= 0;
 			Result <= Result+A;

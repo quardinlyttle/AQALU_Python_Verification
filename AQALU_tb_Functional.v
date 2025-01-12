@@ -50,14 +50,14 @@ module AQALU_tb;
         $display("|Time\t|Match Status\t|Opcode\t|Expected \t|ALU-Output\t|Seconds\t|");
         $display("====================================================================");
         while (!$feof(fd)) begin
-            code = $fscanf(fd, "%d,%d,%d,%d\n", A1, B1, op1, out1);
+            code = $fscanf(fd, "%d,%d,%d,%d,%d\n", A1, B1, op1, out1,seconds);
             opcode = op1[3:0];   // Read the opcode
             testOut = out1[7:0];  // Slice and read the output
             A = A1[1:0];          //Slice and read for A
             B = B1[1:0];          //Slice and read for B
             #10;                 // Wait to apply the new opcode to AQALU
 
-            if(opcode < 4'b1110)begin
+            if(opcode < 4'b1111)begin
                // $display("Opcode: %b, Expected Output: %8b, ALU Output: %b", opcode, testOut, aluOut);
                 if (aluOut !== testOut) begin
                     $display("|%0tns\t|Mismatch!\t|%b\t|%b\t|%b\t|%d\t|",$time,opcode, testOut, aluOut, numSeconds);
